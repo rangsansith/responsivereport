@@ -3,36 +3,268 @@
 <meta name=viewport content="width=device-width, initial-scale=1">
 <title>The Responsive Report</title>
 
-<h1>The Responsive Report</h1>
+<script src=http://tomhodgins.github.io/cssplus/varsity.js></script>
+<script src=http://tomhodgins.github.io/cssplus/cursory.js></script>
 
-<h2>Zero filler content</h2>
-<p>This newsletter is published by <a href="https://twitter.com/innovati">Tommy Hodgins</a> and is delivered on a “whenever it's ready” schedule to ensure that every item is worthwhile.</p>
+<style>
+  * {
+    box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-kerning: auto;
+  }
+  html {
+    --headline-offsetLeft: 200;
+    --headline-offsetWidth: 500;
+    --cursorX: 0;
+    --cursorY: 700;
+    font-family: sans-serif;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    margin: 0;
+    color: white;
+    font-size: 16pt;
+    text-shadow: rgba(0, 0, 0, .1) 0 1px 0;
+    overflow-x: hidden;
+  }
+  footer {
+    text-align: center;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    line-height: 1;
+  }
+  * + h1,
+  * + h2,
+  * + h3,
+  * + h4,
+  * + h5,
+  * + h6 {
+    margin: 1em 0;
+  }
+  h1 {
+    margin: .5em 0;
+    color: black;
+    font-size: 10vw;
+    font-weight: bolder;
+    text-align: center;
+    text-shadow:
+      white
+      calc(
+        ( var(--headline-offsetLeft)
+        + var(--headline-offsetWidth) / 2
+        - var(--cursorX) ) / 100 * 1px
+      )
+      calc(
+        ( var(--headline-offsetTop)
+        + var(--headline-offsetHeight) / 2
+        - var(--cursorY) ) / 100 * 1px
+      )
+      0
+    ;
+    mix-blend-mode: screen;
+  }
+  p {
+    margin: 0;
+    line-height: 1.4;
+  }
+  ol,
+  ul {
+    margin: 0;
+  }
+  li {
+    margin: 1em;
+  }
+  h2,
+  p,
+  ol,
+  ul {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+  }
+  * + p,
+  * + ol,
+  * + ul {
+    margin-top: 1em;
+  }
+  section {
+    display: block;
+    padding: 1em 1em 8em 1em;
+    position: relative;
+  }
+  section:before,
+  section:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -12em;
+    left: -100%;
+    border: 100vw solid transparent;
+    border-top-width: 6em;
+    border-bottom-width: 6em;
+    z-index: 50;
+  }
+  section:after {
+    left: 0;
+  }
+  form {
+    margin: 2em 0;
+  }
+  label {
+    display: block;
+    line-height: 1;
+  }
+  input {
+    display: inline-block;
+    appearance: none;
+    -webkit-appearance: none;
+    background: white;
+    border: 2px solid transparent;
+    border-radius: 3px;
+    padding: .5em;
+    margin: 0 auto;
+    min-width: 200px;
+    font-size: 16pt;
+  }
+  input:focus,
+  input:active {
+    outline: none;
+    border: 2px solid hsl(10,85%,50%);
+  }
+  input[type=email] {
+    min-width: 250px;
+    width: 50%;
+    max-width: 500px;
+  }
+  input[type=email],
+  input[type=submit] {
+    margin-top: 1em;
+  }
+  input[type=submit] {
+    background: hsl(22,86%,50%);
+    color: white;
+    cursor: pointer;
+    padding: .5em .75em;
+  }
+  input[type=submit]:hover {
+    background: orange;
+    border-color: orange;
+    color: white;
+  }
+  input[type=submit]:active {
+    border-color: orange;
+    background: hsl(10,85%,50%);
+  }
+  .jumbo {
+    font-size: 18pt;
+  }
+  .jumbo img {
+    display: block;
+    margin: 0 auto 1em;
+    width: 50%;
+    max-width: 150px;
+    border-radius: 100%;
+  }
+  #hero {
+    padding-bottom: 6em;
+    background: linear-gradient(
+      -159deg,
+      hsl(10,85%,50%) 0%,
+      hsl(35,87%,50%) 100%
+    );
+  }
+  #intro {
+    background: hsl(10,85%,50%);
+    font-weight: 500;
+  }
+  #intro:before,
+  #intro:after {
+    border-bottom-color: hsl(10,85%,50%);
+  }
+  #intro a {
+    color: rgba(255, 255, 255, .75);
+    text-shadow: none;
+  }
+  #intro a:hover {
+    color: rgba(255, 255, 255, .9);
+  }
+  #content {
+    background: hsl(22,86%,50%);
+  }
+  #content:before,
+  #content:after {
+    border-bottom-color: hsl(22,86%,50%);
+  }
+  #signup {
+    padding-bottom: 2em;
+    background: hsl(35,87%,50%);
+    text-align: center;
+  }
+  #signup:before,
+  #signup:after {
+    border-bottom-color: hsl(35,87%,50%);
+  }
+  @media (min-width: 800px) {
+    section {
+      padding: 2em 1em 10em 1em;
+    }
+    .jumbo img {
+      float: right;
+      margin-bottom: 0;
+      margin-left: 1em;
+      position: relative;
+      bottom: 1em;
+      z-index: 500;
+    }
+  }
+</style>
 
-<h2>What to expect</h2>
-<ul>
-  <li>Latest Design Experiments
-  <li>New Responsive Techniques
-  <li>Plugin Announcements
-  <li>Key Conversations
-  <li>Research Updates
-</ul>
+<section id=hero>
+  <h1 data-varsity=headline><small>The</small><br>Responsive<br>Report</h1>
+</section>
 
-<div id="mc_embed_signup">
-  <form action="https://tomhodgins.us10.list-manage.com/subscribe/post?u=df899bcfda656bdcc8fb07c20&amp;id=b403c8835c" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-    <div id="mc_embed_signup_scroll">
-      <h2>Subscribe to The Responsive Report</h2>
-      <div class="mc-field-group">
-        <label for="mce-EMAIL">Email Address </label>
-        <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+<section id=intro>
+  <p class=jumbo><img src=https://i.imgur.com/PKYFzK8.jpg alt="Tommy Hodgins">Hi, my name's <a href="https://twitter.com/innovati" title="Tommy Hodgins on Twitter">Tommy</a>, I’m a designer and developer having fun exploring new technologies and design concepts.</p>
+
+<p>I build websites and research new design ideas. I also make videos and write blog posts about the new techniques I discover, and sometimes I build plugins and demos to help people use the techniques I find.</p>
+
+<p>If you want to follow me on my journey as I experiment with new concepts, explain new design techniques, and want to be the first to know about the software I'm building, sign up below.</p>
+</section>
+
+<section id=content>
+  <h2>Zero filler content</h2>
+
+  <p>This newsletter is published on a “whenever it's ready” schedule to ensure that every item is worthwhile.</p>
+
+  <h2>What to expect</h2>
+  <ul>
+    <li>Latest Design Experiments
+    <li>New Responsive Techniques
+    <li>Plugin Announcements
+    <li>Key Conversations
+    <li>Research Updates
+  </ul>
+</section>
+
+<section id=signup>
+  <h2>Subscribe to The Responsive Report</h2>
+  <div id="mc_embed_signup">
+    <form action="https://tomhodgins.us10.list-manage.com/subscribe/post?u=df899bcfda656bdcc8fb07c20&amp;id=b403c8835c" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+      <div id="mc_embed_signup_scroll">
+        <div class="mc-field-group">
+          <label for="mce-EMAIL">Email Address </label>
+          <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+        </div>
+        <div id="mce-responses" class="clear">
+          <div class="response" id="mce-error-response" style="display:none"></div>
+          <div class="response" id="mce-success-response" style="display:none"></div>
+        </div>
+        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_df899bcfda656bdcc8fb07c20_b403c8835c" tabindex="-1" value=""></div>
+        <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
       </div>
-      <div id="mce-responses" class="clear">
-        <div class="response" id="mce-error-response" style="display:none"></div>
-        <div class="response" id="mce-success-response" style="display:none"></div>
-      </div>
-      <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_df899bcfda656bdcc8fb07c20_b403c8835c" tabindex="-1" value=""></div>
-      <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-    </div>
-  </form>
-</div>
-
-<footer>Made with &hearts; by <a href="https://twitter.com/innovati">@innovati</a></footer>
+    </form>
+  </div>
+</section>
