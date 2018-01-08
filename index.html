@@ -13,6 +13,33 @@
     -moz-osx-font-smoothing: grayscale;
     font-kerning: auto;
   }
+  ::-moz-selection {
+    color: #fff;
+    text-shadow: darkorange 0 1px 0;
+    background-color: yellow;
+  }
+  ::-webkit-selection {
+    color: #fff;
+    text-shadow: darkorange 0 1px 0;
+    background-color: yellow;
+  }
+  ::selection {
+    color: #fff;
+    text-shadow: darkorange 0 1px 0;
+    background-color: gold;
+  }
+  ::-webkit-input-placeholder {
+    color: hsl(35,87%,50%);
+  }
+  ::-moz-placeholder {
+    color: hsl(35,87%,50%);
+  }
+  :-ms-input-placeholder {
+    color: hsl(35,87%,50%);
+  }
+  :placeholder-shown {
+    color: hsl(35,87%,50%);
+  }
   html {
     --headline-offsetLeft: 200;
     --headline-offsetWidth: 500;
@@ -159,9 +186,14 @@
     cursor: pointer;
     padding: .5em .75em;
   }
+  input[type=submit]:hover,
   input[type=submit]:hover {
     background: orange;
-    border-color: orange;
+    color: white;
+  }
+  input[type=submit]:focus {
+    background: orange;
+    border-color: hsl(10,85%,50%);
     color: white;
   }
   input[type=submit]:active {
