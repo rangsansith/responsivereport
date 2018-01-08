@@ -4,7 +4,6 @@
 <title>The Responsive Report</title>
 
 <script src=http://tomhodgins.github.io/cssplus/varsity.js></script>
-<script src=http://tomhodgins.github.io/cssplus/cursory.js></script>
 
 <style>
   * {
@@ -27,7 +26,6 @@
     color: white;
     font-size: 16pt;
     text-shadow: rgba(0, 0, 0, .1) 0 1px 0;
-    overflow-x: hidden;
   }
   footer {
     text-align: center;
@@ -109,6 +107,7 @@
   }
   section:after {
     left: 0;
+    border-right-width: 0;
   }
   form {
     margin: 2em 0;
@@ -268,3 +267,87 @@
     </form>
   </div>
 </section>
+
+<script>
+  const cursory = {}
+
+  cursory.style = ''
+
+  cursory.load = (e) => {
+
+    // Find (or create) style tag to populate
+    const style_tag = document.querySelector('[data-cursory-style]') || (() => {
+
+      const tag = document.createElement('style')
+      tag.setAttribute('data-cursory-style', '')
+      document.head.appendChild(tag)
+      return tag
+
+    })()
+
+    cursory.style = ''
+
+    cursory.process(e)
+
+    // Populate style tag with current CSS string
+    style_tag.innerHTML = `:root {\n${cursory.style.replace(/^/gm,'  ')}\n}`
+
+  }
+
+  cursory.process = e => {
+
+    let newRule = cursory.transform(e)
+
+    if (newRule.length > 0) {
+
+      cursory.style = newRule
+
+    }
+
+  }
+
+  cursory.transform = e => {
+
+    let newRule = ''
+
+    // List cursor position, window dimensions, and click status
+    newRule += `\n--cursorX: ${e.clientX || (e.touches ? e.touches[0].clientX : 0)};`
+    + `\n--cursorY: ${e.clientY || ( e.touches ? e.touches[0].clientY : innerHeight)};`
+    + `\n--innerWidth: ${innerWidth};`
+    + `\n--innerHeight: ${innerHeight};`
+    + `\n--clicked: ${cursory.clicked};`
+    + '\n'
+
+    return newRule
+
+  }
+
+  // Set status of `clicked` variable
+  cursory.clicked = 0
+
+  cursory.startClick = e => {
+    cursory.clicked = 1
+    cursory.load(e)
+  }
+
+  cursory.endClick = e => {
+    cursory.clicked = 0
+    cursory.load(e)
+  }
+
+  // Update on `load` and `resize`
+  window.addEventListener('load', cursory.load)
+  window.addEventListener('resize', cursory.load)
+
+  // Update every `mousemove` and `touchmove`
+  window.addEventListener('mousemove', cursory.load)
+  window.addEventListener('touchmove', cursory.load)
+
+  // Start click on `mousedown` and `touchstart`
+  window.addEventListener('mousedown', cursory.startClick)
+  window.addEventListener('touchstart', cursory.startClick)
+
+  // End click on `mouseup` and `touchend`
+  window.addEventListener('mouseup', cursory.endClick)
+  window.addEventListener('touchend', cursory.endClick)
+</script>
