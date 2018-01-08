@@ -71,9 +71,24 @@
   ol,
   ul {
     margin: 0;
+    list-style: none;
+    padding: 0;
   }
   li {
-    margin: 1em;
+    margin: 2em 0;
+    padding: 0 0 0 3em;
+    position: relative;
+  }
+  li:hover {
+    font-weight: bold;
+  }
+  li:before {
+    content: attr(data-bullet);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: 200%;
   }
   h2,
   p,
@@ -81,7 +96,7 @@
   ul {
     margin-left: auto;
     margin-right: auto;
-    max-width: 800px;
+    max-width: 700px;
   }
   * + p,
   * + ol,
@@ -236,11 +251,11 @@
 
   <h2>What to expect</h2>
   <ul>
-    <li>Latest Design Experiments
-    <li>New Responsive Techniques
-    <li>Plugin Announcements
-    <li>Key Conversations
-    <li>Research Updates
+    <li data-bullet="⏱">Latest Design Experiments
+    <li data-bullet="🆕">New Responsive Techniques
+    <li data-bullet="📢">Plugin Announcements
+    <li data-bullet="💬">Key Conversations
+    <li data-bullet="📊">Research Updates
   </ul>
 </section>
 
@@ -307,7 +322,7 @@
 
     // List cursor position, window dimensions, and click status
     newRule += `\n--cursorX: ${e.clientX || (e.touches ? e.touches[0].clientX : 0)};`
-    + `\n--cursorY: ${e.clientY || ( e.touches ? e.touches[0].clientY : documentquerySelector('#hero').offsetHeight)};`
+    + `\n--cursorY: ${e.clientY || ( e.touches ? e.touches[0].clientY : document.querySelector('#hero').offsetHeight)};`
     + `\n--innerWidth: ${innerWidth};`
     + `\n--innerHeight: ${innerHeight};`
     + `\n--clicked: ${cursory.clicked};`
