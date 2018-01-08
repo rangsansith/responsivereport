@@ -118,6 +118,9 @@
     transform: translateY(-50%);
     font-size: 200%;
   }
+  li:hover:before {
+    transform: translateY(-50%) rotateZ(-15deg);
+  }
   h2,
   p,
   ol,
@@ -211,6 +214,10 @@
     width: 50%;
     max-width: 150px;
     border-radius: 100%;
+    transition: transform .5s ease-in-out;
+  }
+  .jumbo img:hover {
+    transform: rotateZ(360deg);
   }
   #hero {
     padding-bottom: 6em;
