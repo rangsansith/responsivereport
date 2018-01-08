@@ -143,7 +143,7 @@
     position: absolute;
     top: -12em;
     left: -100%;
-    border: 100vw solid transparent;
+    border: calc(var(--body-offsetWidth) * 1px) solid transparent;
     border-top-width: 6em;
     border-bottom-width: 6em;
     z-index: 50;
@@ -264,6 +264,8 @@
     }
   }
 </style>
+
+<body data-varsity=body>
 
 <section id=hero>
   <h1 data-varsity=headline><small>The</small><br>Responsive<br>Report</h1>
