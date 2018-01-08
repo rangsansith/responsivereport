@@ -312,7 +312,7 @@
 
     // List cursor position, window dimensions, and click status
     newRule += `\n--cursorX: ${e.clientX || (e.touches ? e.touches[0].clientX : 0)};`
-    + `\n--cursorY: ${e.clientY || ( e.touches ? e.touches[0].clientY : innerHeight)};`
+    + `\n--cursorY: ${e.clientY || ( e.touches ? e.touches[0].clientY : documentquerySelector('#hero').offsetHeight)};`
     + `\n--innerWidth: ${innerWidth};`
     + `\n--innerHeight: ${innerHeight};`
     + `\n--clicked: ${cursory.clicked};`
