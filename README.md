@@ -1,4 +1,4 @@
-![](//i.imgur.com/vYAZJYQ.png)
+![](https://i.imgur.com/vYAZJYQ.png)
 
 # The Responsive Report
 
