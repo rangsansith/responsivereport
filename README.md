@@ -1,10 +1,4 @@
-![](https://i.imgur.com/vYAZJYQ.png)
-
-# The Responsive Report
-
-**A newsletter from [@innovati](//twitter.com/innovati) about web & design**
-
----
+# ![](https://i.imgur.com/vYAZJYQ.png)
 
 Hi, my name's [Tommy](//twitter.com/innovati). I’m a designer and developer having fun exploring new technologies and design concepts with CSS and JavaScript.
 
